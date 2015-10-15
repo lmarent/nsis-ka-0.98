@@ -1,0 +1,16 @@
+-----------------------------------------------------------
+$Id: README 5619 2010-09-02 13:44:17Z bless $
+$HeadURL: https://svn.ipv6.tm.uka.de/nsis/protlib/branches/20091014-autotools/README $
+-----------------------------------------------------------
+This is protlib, a simple library containing functions for
+* converting PDUs and PDU objects into byte streams
+* parsing PDUs and PDU objects into C++ classes
+* modules that consist of one or more threads
+* functions for sending and receiving messages between
+  threads
+* some modules for transport protocols that can
+  receive and send message from/to modules
+* a timer module that manages timers
+* support for configuration parameters
+* socket and transport related functions
+

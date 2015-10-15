@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name:libfastqueue
+Description: NSIS protocol fast queue library 
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -lfastqueue
