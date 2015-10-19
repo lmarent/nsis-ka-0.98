@@ -514,16 +514,19 @@ AddressList::ignore_locals(void)
 {
 	netaddress na;
 
-	na.set_ip("10.0.0.0");na.set_pref_len(8);
-	ignore(na);
-	na.set_ip("172.16.0.0");na.set_pref_len(12);
-	ignore(na);
-	na.set_ip("192.168.0.0");na.set_pref_len(16);
-	ignore(na);
-	na.set_ip("FE80::");na.set_pref_len(10);
-	ignore(na);
-	na.set_ip("FEC0::");na.set_pref_len(10);
-	ignore(na);
+	// AM: 2015 
+	// It excluded locals, we added because testing is done
+	// with ranges in local networks.
+	//na.set_ip("10.0.0.0");na.set_pref_len(8);
+	//ignore(na);
+	//na.set_ip("172.16.0.0");na.set_pref_len(12);
+	//ignore(na);
+	//na.set_ip("192.168.0.0");na.set_pref_len(16);
+	//ignore(na);
+	//na.set_ip("FE80::");na.set_pref_len(10);
+	//ignore(na);
+	//na.set_ip("FEC0::");na.set_pref_len(10);
+	//ignore(na);
 
 	return true;
 }
