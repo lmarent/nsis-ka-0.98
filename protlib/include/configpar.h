@@ -112,7 +112,7 @@ class configparBase
 public:
 
   // constructors
-  configparBase() : realm_id(0), par_id(0), unit(NULL) {};
+  configparBase() : realm_id(0), par_id(0), unit(NULL) { };
   configparBase(realm_id_t realm, configpar_id_t configparid, const char* name, const char* description, bool chg_at_runtime, const char* unitinfo= NULL);
 
   virtual ~configparBase() { }
@@ -208,6 +208,7 @@ public:
 
   /// write the configuration parameter value to config file (value will be quoted for some types, e.g. strings)
   virtual ostream& writeValToConfig(ostream& outstream) const;
+  
   /// read the configuration parameter value from config file (value will be quoted for some types, e.g. strings)
   virtual istream& readValFromConfig(istream& inputstream);
 
@@ -215,9 +216,23 @@ private:
   T value;
 };
 
+// FIX Andres Marentes
+// 10-20-2015.
+// This assures that the compiler always call template specialization methods
+// The software was calling these functions or the general functions without
+// an apparent reason.
+// start modification
+template <> std::istream& configpar<bool>::readVal(std::istream &in);
+template <> std::ostream& configpar<bool>::writeVal(std::ostream &out) const;
+template <> std::istream& configpar<int>::readVal(std::istream &in);
+template <> std::istream& configpar<int>::readVal(std::istream &in);
+template <> std::istream& configpar< list<hostaddress> >::readVal(std::istream &in);
+template <> std::istream& configpar< string >::readValFromConfig(std::istream &in);
+template <> std::istream& configpar< list<hostaddress> >::readValFromConfig(std::istream &in);
+template <> std::ostream& configpar< list<hostaddress> >::writeValToConfig(std::ostream& outstream) const;
+template <> std::ostream& configpar<string>::writeValToConfig(std::ostream& outstream) const;
 
-
-
+// end modification
 
 /** general inline functions **/
 
@@ -236,6 +251,8 @@ inline
 istream& 
 configpar<T>::simpleReadVal(istream& inputstream) 
 { 
+	
+	std::cout << "Simple read val" << endl;
 	return inputstream >> value; 
 }
 
@@ -254,6 +271,7 @@ inline
 istream& 
 configpar<T>::readVal(istream& inputstream) 
 { 
+	std::cout << "I am in readVal general" << endl;
 	return simpleReadVal(inputstream); 
 }
 
@@ -273,6 +291,7 @@ inline
 istream& 
 configpar<T>::readValFromConfig(istream& inputstream) 
 { 
+	std::cout << "I am in readValFromConfig general" << endl; 
 	return readVal(inputstream); 
 }
 
@@ -286,10 +305,9 @@ ostream& operator<<(ostream& outstream, const configpar<bool>& cfgboolpar)
 }
 
 
-
-
-
 } // end namespace protlib
+
+
 
 
 #endif // defined _CONFIGPAR__H
