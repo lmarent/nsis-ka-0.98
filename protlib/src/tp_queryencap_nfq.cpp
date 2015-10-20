@@ -991,28 +991,40 @@ int TPqueryEncap::callback_rcv_v4(struct nfq_q_handle *qh, struct nfgenmsg *nfms
 			"[IPv4catcher] - " <<
 			"receipt of PDU now complete, sending msg#" << tpmsg->get_id() << " to signaling module");
 
-			/*
-			if (debug_pdu)
-			{
+			
 			ostringstream hexdump;
 			netmsg->hexdump (hexdump, netmsg->get_buffer (),
-				 bytes_received);
-			Log (DEBUG_LOG, LOG_NORMAL, tpparam.name,
+				ntohs(udp->len) - udp_header_size);
+			Log (DEBUG_LOG, LOG_NORMAL, "TPqueryEncap",
 			 "PDU debugging enabled - Received:" << hexdump.str ());
-			}
-			*/
+			
+			
+			try{
+			   // send the message if it was successfully created
+			   tpmsg->send(message::qaddr_tp_queryencap, message::qaddr_signaling);
 
-			// send the message if it was successfully created
-			if (!tpmsg->send(message::qaddr_tp_queryencap, message::qaddr_signaling))
-			{
-				Log (ERROR_LOG, LOG_NORMAL, "TPqueryEncap",
-						"[IPv4catcher] - " << "Cannot allocate/send TPMsg");
-				if (tpmsg)
-				delete tpmsg;
-				if (netmsg)
-				delete netmsg;
+			   
+                        }  catch (TPErrorSendFailed &e){
+                           std::cout << "errorrrrrrrrrrr" << std::endl;
 
-			}
+			   Log (ERROR_LOG, LOG_NORMAL, "TPqueryEncap",
+                                                "[IPv4catcher] - " << "Cannot allocate/send TPMsg");
+                                if (tpmsg)
+                                delete tpmsg;
+                                if (netmsg)
+                                delete netmsg;
+			
+		       } catch (...){
+
+  			 std::cout << "uncaptured error" << std::endl;
+                         Log (ERROR_LOG, LOG_NORMAL, "TPqueryEncap",
+                                                "[IPv4catcher] - " << "Cannot allocate/send TPMsg");
+                                if (tpmsg)
+                                delete tpmsg;
+                                if (netmsg)
+                                delete netmsg;
+		       }
+			
 
 		}
 		else
