@@ -45,7 +45,11 @@ timername(timer_type_t timertype)
 
 // put as static method here to avoid circular dependencies in header file
 // is, however, also the same for every routingtable object
-uint32 routingentry::get_retry_limit() { return gconf.getpar<uint32>(gistconf_retrylimit); }
+uint32 routingentry::get_retry_limit() 
+{ 
+	gconf.getpar<uint32>(gistconf_retrylimit); 
+
+}
 uint32 routingentry::get_retry_period() { return gconf.getpar<uint32>(gistconf_retryperiod); }
 
 string

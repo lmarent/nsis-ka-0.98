@@ -221,8 +221,10 @@ configpar_repository::registerPar(const configparBase& config_parameter)
 
   if (confpar_p == 0) 
   {
+	confpar_p = config_parameter.copy();
+	
     // store a copy of the given configpar subclass object
-    realm_p->first->at(config_parameter.getParId())= config_parameter.copy();
+    realm_p->first->at(config_parameter.getParId())= confpar_p;
   }
   else
     throw configParExceptionParAlreadyRegistered(config_parameter.getParId());
@@ -259,6 +261,7 @@ configpar_repository::registerPar(configparBase *config_parameter)
   if (confpar_p == 0) 
   {
     // store a copy of the given configpar object
+
     realm_p->first->at(config_parameter->getParId())= config_parameter;
   }
   else

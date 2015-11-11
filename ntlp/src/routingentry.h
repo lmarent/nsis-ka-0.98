@@ -37,9 +37,11 @@
 #include "msghandle.h"
 #include "timer_module.h"
 #include "apimessage.h"
+#include "gist_conf.h"
 
 namespace ntlp 
 {
+
 
 using namespace protlib;
 

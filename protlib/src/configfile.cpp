@@ -212,10 +212,11 @@ void configfile::load(std::istream &in_stream) throw (configfile_error) {
 
 		// read in the value
 		try {
-			
-					  
+						
 			// get parameter from config repository
-			configparBase* cfgpar= confpar_repository->getConfigPar(current_realm, configparid);
+			configparBase* cfgpar = confpar_repository->getConfigPar(current_realm, configparid);
+		
+			
 			cfgpar->readValFromConfig(in);
 
 		}

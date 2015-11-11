@@ -166,6 +166,8 @@ configpar<bool>::readVal(std::istream &in) {
 
 	in >> tmp;
 
+    std::cout << "bool value:" << tmp << endl;
+
 	if ( tmp == "true" || tmp == "on" || tmp == "yes" || tmp == "1" )
 		value = true;
 	else if ( tmp == "false" || tmp == "off" || tmp == "no" || tmp == "0" )
@@ -242,6 +244,9 @@ configpar< list<hostaddress> >::readVal(std::istream &in) {
 template <>
 istream& 
 configpar< string >::readValFromConfig(std::istream &in) {
+
+	std::cout << "I am in readValFromConfig string" << endl; 
+
 	value= parse_quoted_string(in);
 	return in;
 }
