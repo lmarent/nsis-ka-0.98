@@ -121,6 +121,7 @@ namespace ntlp {
 		  return cfp_rep->getParRef<T>(gist_realm, configparid);
 	  }
 
+	  int variable;
 
   private:
 	  configpar_repository* cfp_rep;
