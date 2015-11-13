@@ -251,8 +251,6 @@ inline
 istream& 
 configpar<T>::simpleReadVal(istream& inputstream) 
 { 
-	
-	std::cout << "Simple read val" << endl;
 	return inputstream >> value; 
 }
 
@@ -271,7 +269,6 @@ inline
 istream& 
 configpar<T>::readVal(istream& inputstream) 
 { 
-	std::cout << "I am in readVal general" << endl;
 	return simpleReadVal(inputstream); 
 }
 
@@ -291,7 +288,6 @@ inline
 istream& 
 configpar<T>::readValFromConfig(istream& inputstream) 
 { 
-	std::cout << "I am in readValFromConfig general" << endl; 
 	return readVal(inputstream); 
 }
 

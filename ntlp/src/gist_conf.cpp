@@ -107,8 +107,9 @@ gistconf::repository_init()
 void
 gistconf::setRepository(configpar_repository* newcfp_rep)
 {
-	if (newcfp_rep == 0)
+	if (newcfp_rep == 0){
 		throw  configParExceptionNoRepository();
+	}
 	
 	cfp_rep= newcfp_rep;
 	// register the realm

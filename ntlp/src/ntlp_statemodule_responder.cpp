@@ -1496,11 +1496,12 @@ Statemodule::create_resp_cookie(const nli* querier_nli, const routingkey* key, u
   unsigned int md_len;
     
   // 2nd: We want SHA1 (maybe we make this a command line option)
-  md = EVP_get_digestbyname(gconf.getparref<string>(gistconf_cookie_digest).c_str());
+  std::string cookieDig = gconf.getpar<string>(gistconf_cookie_digest);
+  md = EVP_get_digestbyname(cookieDig.c_str());
   
   if(!md) {
-	  ERRCLog(param.name, "Hash algorithm " << gconf.getparref<string>(gistconf_cookie_digest) << " not available. Please update your OpenSSL library!");
-    abort();
+	ERRCLog(param.name, "Hash algorithm " << cookieDig.c_str() << " not available. Please update your OpenSSL library!");
+	abort();
   }
   
   // 3rd: Initialize hasher

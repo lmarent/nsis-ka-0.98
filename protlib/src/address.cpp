@@ -381,7 +381,7 @@ istream& operator>>(istream& inputstream, hostaddress& ha)
 }
 
 
-istream& operator>>(istream& inputstream, list<hostaddress>& halist)
+istream& operator>>(istream& inputstream, list<protlib::hostaddress>& halist)
 {
   while ( inputstream ) {
     std::string token;
@@ -398,7 +398,7 @@ istream& operator>>(istream& inputstream, list<hostaddress>& halist)
 }
 
 
-ostream& operator<<(ostream& outstream, const list<hostaddress>& addresslist)
+ostream& operator<<(ostream& outstream, const list<protlib::hostaddress>& addresslist)
 {
   // algo?  foreach...
   list<hostaddress>::const_iterator haddr_citer= addresslist.begin();

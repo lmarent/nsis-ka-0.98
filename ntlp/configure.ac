@@ -103,6 +103,7 @@ AC_ARG_WITH(pkgconfigdir,
 	[pkgconfigdir='${libdir}/pkgconfig'])
 
 AC_SUBST([pkgconfigdir])
+
 AC_MSG_NOTICE([pkgconfig directory is ${pkgconfigdir}])
 
 

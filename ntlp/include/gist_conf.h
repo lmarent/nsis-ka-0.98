@@ -86,7 +86,9 @@ namespace ntlp {
   public:
 	  // constructor should not do much, because we want to allow for later 
 	  gistconf() : cfp_rep(0) {};
-
+		
+	   int var;	
+		
 	  /// creates the repository singleton (must be explicitly called)
 	  static void repository_init();
 
@@ -112,16 +114,16 @@ namespace ntlp {
 	  // this is just a convenience function
 	  template <class T> T getpar(gist_configpar_id_t configparid)
 	  {
-		  return cfp_rep->getPar<T>(gist_realm, configparid);
+		  T val =  cfp_rep->getPar<T>(gist_realm, configparid);
+		  return val;
 	  }
 
 	  // this is just a convenience function
 	  template <class T> T& getparref(gist_configpar_id_t configparid)
 	  {
 		  return cfp_rep->getParRef<T>(gist_realm, configparid);
+		  
 	  }
-
-	  int variable;
 
   private:
 	  configpar_repository* cfp_rep;
@@ -132,9 +134,12 @@ namespace ntlp {
 
   };
 
-  // only declared here, must be defined somewhere else
-  extern class gistconf gconf;
+// only declared here, must be defined somewhere else
+extern class gistconf gconf;
 
 } // end namespace
+
+
+
 
 #endif

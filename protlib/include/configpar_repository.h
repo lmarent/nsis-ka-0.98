@@ -99,6 +99,7 @@ private:
 
 
 
+
 template <class T>
 T 
 configpar_repository::getPar(realm_id_t realm, configpar_id_t configparid) const
@@ -154,6 +155,7 @@ configpar_repository::setPar(realm_id_t realm, configpar_id_t configparid, const
   else
     throw configParExceptionTypeMismatch(configparid);
 }
+
 
 class configParExceptionNoRepository : public configParException {
 public:
