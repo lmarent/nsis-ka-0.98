@@ -14,7 +14,11 @@ test_runner_LDADD = $(LD_PROTLIB_LIB) $(LD_FQUEUE_LIB) -L../src -lgist -lprot -l
 #  -lpthread -lipq -lssl -lcrypto
 TESTS = $(check_PROGRAMS)
 
-AM_CXXFLAGS = -Wall -ggdb -pedantic -Wno-long-long
+AM_CXXFLAGS = -Wall -pedantic -Wno-long-long
+
+if NTLP_DEBUG
+AM_CXXFLAGS += -g -ggdb
+endif
 
 if GIST_NO_WARN_HASHMAP
 AM_CXXFLAGS += -Wno-deprecated

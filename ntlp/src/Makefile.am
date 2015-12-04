@@ -89,7 +89,7 @@ endif
 
 if NTLP_DEBUG
 AM_CXXFLAGS += -g
-AM_CXXFLAGS += -D_DEBUG -D_GLIBCXX_DEBUG -ggdb
+AM_CXXFLAGS += -D_DEBUG -ggdb
 endif
 
 # end of Makefile.am

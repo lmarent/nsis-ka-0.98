@@ -13,5 +13,5 @@ check_PROGRAMS = testqueue
 testqueue_SOURCES = testqueue.c fastqueue.c fastqueue.h eclock_gettime.c
 testqueue_LDADD = -lrt
 testqueue_CPPFLAGS = -DQUEUELEN
-testqueue_CFLAGS = -g -Wall
+testqueue_CFLAGS = -g -Wall -ggdb
 TESTS = $(check_PROGRAMS)

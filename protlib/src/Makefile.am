@@ -73,7 +73,7 @@ endif
 
 if PROTLIB_DEBUG
 AM_CXXFLAGS = -g
-AM_CXXFLAGS += -D_DEBUG -D_GLIBCXX_DEBUG -ggdb
+AM_CXXFLAGS += -D_DEBUG -ggdb
 endif
 
 #PROTLIB_CXXFLAGS       += -DHAS_RFC3542 # for newer glibc with advanced IPv6 API support according to RFC3542
