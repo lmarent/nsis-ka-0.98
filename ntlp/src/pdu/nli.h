@@ -52,7 +52,7 @@ public:
   // constructor if creating a brand_new initialized one (new PI)
   peer_identity() :
     length(16), // 128 bit
-    buf(new uchar[length])
+    buf(new uchar[16])
   {
     RAND_bytes(buf, length);
   }
@@ -75,7 +75,7 @@ public:
   // destructor
   ~peer_identity() 
   {
-    if (buf) delete buf;
+    if (buf) delete[] buf;
   }
 
   uchar* get_buffer() {

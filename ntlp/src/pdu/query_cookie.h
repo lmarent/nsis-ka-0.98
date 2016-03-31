@@ -144,7 +144,7 @@ virtual
 inline
     ~querycookie()
     {
-	if (buf) delete buf;
+	if (buf) delete[] buf;
     }
 
 };
