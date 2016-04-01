@@ -144,7 +144,7 @@ virtual
 inline
 ~nslpdata()
 {
-	if (buf) delete buf;
+	if (buf) delete[] buf;
 }
 
 }; // end class nslp_data

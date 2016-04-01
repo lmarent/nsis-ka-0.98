@@ -144,7 +144,7 @@ public:
     }
   };
 
-  virtual ~respcookie() { delete buf; }
+  virtual ~respcookie() { delete[] buf; }
 
   nli*	get_nli() const;
   nattraversal* get_nto(uint16 byteoffset) const;
